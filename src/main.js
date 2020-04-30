@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-28 19:57:00
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-04-29 10:36:09
+* @Last Modified time: 2020-04-30 15:54:43
 * @Description: create by zgh
 * @GitHub: Savour Humor
 */
@@ -11,10 +11,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import scrollLoad from 'vue-scroll-render'
 
-import scrollLoad from './plugins/scroll-load'
+Vue.use(scrollLoad)
 
-Vue.component('scroll-load', scrollLoad)
 
 Vue.config.productionTip = false
 
