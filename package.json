@@ -1,7 +1,7 @@
 {
   "name": "vue-scroll-render",
   "description": "upload plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "zhangguohua <zhangguohua@shuidihuzhu.com>",
   "license": "MIT",
   "private": false,
