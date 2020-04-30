@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-29 16:03:51
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-04-29 17:29:48
+* @Last Modified time: 2020-04-30 16:49:59
 * @Description: create by zgh
 * @GitHub: Savour Humor
 */
@@ -14,10 +14,16 @@
 
 
 ## how to use
+// 安装
+```
+npm install vue-scroll-render
+
+yarn add vue-scroll-render
+```
 
 ```js
 // main.js 中引入 
-import scrollLoad from './lib/index'
+import scrollLoad from 'vue-scroll-render'
 Vue.use(scrollLoad)
 ```
 
