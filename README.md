@@ -9,6 +9,12 @@
 
 # plugins
 
-移动到分支 plugin-package
+## desc
+- master: 用来开发插件，测试插件；
+- plugin-package： 第一个插件，本来想把所有分支放这里，想了下，还是一个插件一个分支吧。只做保留。
 
-master 用来做 test-plugin 内容
+其他分支，都对应相应的插件。
+
+## plugin list
+
+1. vue-scroll-render: 首屏滚动加载插件。
