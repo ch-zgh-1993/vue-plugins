@@ -30,5 +30,18 @@
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
-  }
+  },
+  "keywords": [
+    "vue", 
+    "lazy load",
+    "scroll load"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ch-zgh-1993/vue-plugins/tree/plugin-package"
+  },
+  "bugs": {
+    "url": "https://github.com/ch-zgh-1993/vue-plugins/issues"
+  },
+  "homepage": "https://github.com/ch-zgh-1993/vue-plugins/blob/plugin-package/README.md"
 }
