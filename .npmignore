@@ -12,4 +12,3 @@ index.html
 .babelrc
 .package-lock.json
 dist/*.map
-dist/*.png

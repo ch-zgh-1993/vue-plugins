@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-29 17:24:55
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-05-07 15:57:34
+* @Last Modified time: 2020-05-07 17:12:17
 * @Description: create by zgh
 * @GitHub: Savour Humor
 */
@@ -10,7 +10,7 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/lib/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
