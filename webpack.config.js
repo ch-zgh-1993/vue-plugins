@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-29 17:24:55
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-04-29 17:25:03
+* @Last Modified time: 2020-05-07 15:43:42
 * @Description: create by zgh
 * @GitHub: Savour Humor
 */
@@ -14,7 +14,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: 'scrollload.js',
+    library: 'scrollload',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [
