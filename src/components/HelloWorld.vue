@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-28 19:57:00
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-04-29 15:32:55
+* @Last Modified time: 2020-05-08 14:50:54
 * @Description: create by zgh
 * @GitHub: Savour Humor
 -->
@@ -132,6 +132,8 @@
     </ul>
 
     <scroll-load
+      :show-block="showBlock"
+      @load="lazyLoad"
       :bottom="200"
     >
       <lazy
@@ -177,19 +179,33 @@
 </template>
 
 <script>
+// 引入插件
+import scrollLoad from '../plugins/scroll-load.vue'
 import lazy from './lazy.vue'
 
 export default {
   name: 'HelloWorld',
   components: {
-    lazy
+    lazy,
+    scrollLoad
   },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
       obj: {
         test: 'i am test message'
-      }
+      },
+      showBlock: false
+    }
+  },
+  created () {
+    setTimeout(() => {
+      this.showBlock = true
+    }, 5000)
+  },
+  methods: {
+    lazyLoad () {
+      console.log('emit load event')
     }
   }
 }
