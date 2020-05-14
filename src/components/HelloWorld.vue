@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-28 19:57:00
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-05-08 14:50:54
+* @Last Modified time: 2020-05-14 20:46:46
 * @Description: create by zgh
 * @GitHub: Savour Humor
 -->
@@ -132,12 +132,21 @@
     </ul>
 
     <scroll-load
-      :show-block="showBlock"
+      :showBlock="showBlock"
+      :slotProps="slotProps"
       @load="lazyLoad"
-      :bottom="200"
-    >
-      <lazy
-        :obj="obj"></lazy>
+    > 
+      <lazy :obj="obj"></lazy>
+      <!-- <template v-slot:head1>
+        <lazy :obj="obj"></lazy>
+      </template>
+      
+      <template v-slot:head1>
+        <lazy1 :obj="obj"></lazy1>
+      </template>
+      <template v-slot:head1>
+        <lazy1 :obj="obj"></lazy1>
+      </template> -->
     </scroll-load>
 
     <h2>Ecosystem</h2>
@@ -181,12 +190,12 @@
 <script>
 // 引入插件
 import scrollLoad from '../plugins/scroll-load.vue'
-import lazy from './lazy.vue'
 
 export default {
   name: 'HelloWorld',
   components: {
-    lazy,
+    lazy: () => import('./lazy.vue' /* webpackChunkName: 'lazy' */),
+    lazy1: () => import('./lazy1.vue' /* webpackChunkName: 'lazy1' */),
     scrollLoad
   },
   data () {
@@ -195,7 +204,9 @@ export default {
       obj: {
         test: 'i am test message'
       },
-      showBlock: false
+      showBlock: false,
+      showLazyLoad: false,
+      slotProps: ['head', 'head1']
     }
   },
   created () {
@@ -204,8 +215,9 @@ export default {
     }, 5000)
   },
   methods: {
-    lazyLoad () {
-      console.log('emit load event')
+    lazyLoad (name) {
+      this.showLazyLoad = true
+      console.log(`emit load event, my slot name is ${name}`)
     }
   }
 }
