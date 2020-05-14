@@ -1,3 +1,11 @@
+/*
+* @Author: Zhang Guohua
+* @Date:   2020-05-08 11:11:09
+* @Last Modified by:   zgh
+* @Last Modified time: 2020-05-13 16:02:49
+* @Description: create by zgh
+* @GitHub: Savour Humor
+*/
 'use strict'
 const utils = require('./utils')
 const webpack = require('webpack')
@@ -14,6 +22,9 @@ const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
+  output: {
+    chunkFilename: '[name].[hash:8].js'
+  },
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
