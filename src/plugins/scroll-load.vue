@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-29 10:17:46
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-05-14 20:45:07
+* @Last Modified time: 2020-05-15 19:21:07
 * @Description: create by zgh
 * @GitHub: Savour Humor
 -->
@@ -13,7 +13,7 @@
 			:key="index"
 			:ref="item.name">
 			<slot 
-				v-slot:[item.name]
+				:name="item.name"
 				v-if="item.showBlock !== null ? item.showBlock : item.show">
 			</slot>
 		</div>
@@ -61,25 +61,31 @@ export default {
 	watch: {
 		showBlock (val) {
 			this.slotProps.length == 0 && (this.slotArr[0].showBlock = !!val)
+		},
+		slotProps (val) {
+			console.log(val)
 		}
 	},
 	methods: {
+		// TODO: 实现滚动参数和 bottom 的兼容，以及数据变动的处理。
 		formatSlotProps () {
 			const slotProps = this.slotProps
 			slotProps.every(val => val.name !== 'default') && slotProps.push({
 				name: 'default',
 				bottom: 100,
+				bottomSpan: -100 * (slotProps.length - 1),
 				showBlock: null,
 				show: false
 			})
-			return slotProps.map(val => {
+			return slotProps.map((val, i) => {
 				if (typeof val !== 'string' && Object.prototype.toString.call(val) !== '[object Object]') throw new Error('slotProps must be Array<string | object>')
 				const base = {
 					showBlock: null,
 					show: false,
+					bottomSpan: -100 * (i - 1),
 					bottom: 100
 				}
-				return typeof val === 'string' ? {
+				return typeof val === 'string' ? result = {
 					...base,
 					name: val
 				} : {
@@ -98,16 +104,17 @@ export default {
 			const vm = this
 			if (!vm.ticking && !vm.slotArr.every(val => vm.judgeShow(val))) {
 			    window.requestAnimationFrame(function() {
-			    	vm.slotArr.forEach(val => {
+			    	vm.slotArr.forEach((val, i) => {
 			    		if(vm.judgeShow(val)) return
-			    		const offsetTop = val.name === 'default' ? (vm.$refs[val.name] && vm.$refs[val.name][0].offsetTop) : vm.$refs[val.name].offsetTop
+			    		const offsetTop = (vm.$refs[val.name] && vm.$refs[val.name][0].offsetTop) || 0
 				    	const scrollTop = document.documentElement.scrollTop
 				    	!vm.viewPortHeight && (vm.viewPortHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)
-
-				    	if (offsetTop - scrollTop < vm.viewPortHeight + val.bottom) {
+				    	const judgeHeight = i > 0 ? vm.viewPortHeight + val.bottomSpan : vm.viewPortHeight + val.bottom
+				    	if (offsetTop - scrollTop < judgeHeight) {
 				    		val.show = true
 				    		vm.$emit('load', val.name)
 				    	}
+				    	i > 0 && vm.judgeShow(vm.slotArr[i - 1]) && (val.bottomSpan = val.bottom)
 			    	})
 			      	vm.ticking = false
 			    })
