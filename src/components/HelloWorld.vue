@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-28 19:57:00
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-05-14 20:46:46
+* @Last Modified time: 2020-05-15 15:22:09
 * @Description: create by zgh
 * @GitHub: Savour Humor
 -->
@@ -132,21 +132,24 @@
     </ul>
 
     <scroll-load
-      :showBlock="showBlock"
       :slotProps="slotProps"
       @load="lazyLoad"
     > 
-      <lazy :obj="obj"></lazy>
-      <!-- <template v-slot:head1>
+      <!-- <lazy :obj="obj"></lazy> -->
+      <!-- <lazy v-slot:head1 :obj="obj"></lazy> -->
+      
+      <template v-slot:head>
         <lazy :obj="obj"></lazy>
       </template>
-      
       <template v-slot:head1>
         <lazy1 :obj="obj"></lazy1>
       </template>
-      <template v-slot:head1>
-        <lazy1 :obj="obj"></lazy1>
-      </template> -->
+      <template v-slot:head2>
+        <lazy2 :obj="obj"></lazy2>
+      </template>
+      <template v-slot:head3>
+        <lazy3 :obj="obj"></lazy3>
+      </template>
     </scroll-load>
 
     <h2>Ecosystem</h2>
@@ -196,6 +199,8 @@ export default {
   components: {
     lazy: () => import('./lazy.vue' /* webpackChunkName: 'lazy' */),
     lazy1: () => import('./lazy1.vue' /* webpackChunkName: 'lazy1' */),
+    lazy2: () => import('./lazy2.vue' /* webpackChunkName: 'lazy2' */),
+    lazy3: () => import('./lazy3.vue' /* webpackChunkName: 'lazy3' */),
     scrollLoad
   },
   data () {
@@ -206,13 +211,45 @@ export default {
       },
       showBlock: false,
       showLazyLoad: false,
-      slotProps: ['head', 'head1']
+      slotProps: [{
+        name: 'head',
+        bottom: 200,
+        showBlock: true
+      }, {
+        name: 'head1',
+        bottom: 40,
+        showBlock: false
+      }, {
+        name: 'head2',
+        bottom: 40,
+        showBlock: false
+      }, {
+        name: 'head3',
+        bottom: 40,
+        showBlock: false
+      }]
     }
   },
   created () {
     setTimeout(() => {
       this.showBlock = true
     }, 5000)
+
+    setTimeout(() => {
+      console.log('timeout 3000')
+      this.slotProps[1].showBlock = true
+      let temp = this.slotProps
+      this.slotProps = null
+      this.slotProps = temp
+    }, 3000)
+    setTimeout(() => {
+      console.log('timeout 6000')
+      this.slotProps[2].showBlock = true
+    }, 6000)
+    setTimeout(() => {
+      console.log('timeout 8000')
+      this.slotProps[3].showBlock = true
+    }, 8000)
   },
   methods: {
     lazyLoad (name) {

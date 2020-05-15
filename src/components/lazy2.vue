@@ -1,8 +1,8 @@
 <!--
 * @Author: Zhang Guohua
-* @Date:   2020-04-29 10:41:11
+* @Date:   2020-05-15 14:10:53
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-05-15 14:16:05
+* @Last Modified time: 2020-05-15 14:11:06
 * @Description: create by zgh
 * @GitHub: Savour Humor
 -->
@@ -24,11 +24,11 @@
 			}
 		},
 		created () {
-			console.log('lazy load')
+			console.log('lazy2 load')
 
 			// 延迟加载
 			setTimeout(() => {
-				this.text = '我是需要延迟加载的内容'
+				this.text = '我是需要延迟加载的内容 lazy2.vue'
 			}, 3000)
 		}
 	}
@@ -40,7 +40,5 @@
 		height: 500px;
 		background: #ccc;
 		color: #FFFFFF;
-		border: 1px solid red;
-		margin-bottom: 50px;
 	}
 </style>
