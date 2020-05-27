@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-28 19:57:00
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-05-15 15:22:09
+* @Last Modified time: 2020-05-27 20:37:12
 * @Description: create by zgh
 * @GitHub: Savour Humor
 -->
@@ -135,6 +135,9 @@
       :slotProps="slotProps"
       @load="lazyLoad"
     > 
+    <!-- <scroll-load
+      @load="lazyLoad"
+    > -->
       <!-- <lazy :obj="obj"></lazy> -->
       <!-- <lazy v-slot:head1 :obj="obj"></lazy> -->
       
@@ -151,6 +154,7 @@
         <lazy3 :obj="obj"></lazy3>
       </template>
     </scroll-load>
+
 
     <h2>Ecosystem</h2>
     <ul>
@@ -214,7 +218,7 @@ export default {
       slotProps: [{
         name: 'head',
         bottom: 200,
-        showBlock: true
+        // showBlock: true
       }, {
         name: 'head1',
         bottom: 40,
@@ -222,11 +226,11 @@ export default {
       }, {
         name: 'head2',
         bottom: 40,
-        showBlock: false
+        // showBlock: false
       }, {
         name: 'head3',
         bottom: 40,
-        showBlock: false
+        // showBlock: false
       }]
     }
   },

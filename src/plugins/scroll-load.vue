@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-29 10:17:46
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-05-15 19:21:07
+* @Last Modified time: 2020-05-27 20:38:29
 * @Description: create by zgh
 * @GitHub: Savour Humor
 -->
@@ -14,6 +14,7 @@
 			:ref="item.name">
 			<slot 
 				:name="item.name"
+				
 				v-if="item.showBlock !== null ? item.showBlock : item.show">
 			</slot>
 		</div>
