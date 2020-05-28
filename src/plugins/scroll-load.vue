@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-29 10:17:46
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-05-27 20:38:29
+* @Last Modified time: 2020-05-28 18:50:24
 * @Description: create by zgh
 * @GitHub: Savour Humor
 -->
@@ -14,7 +14,7 @@
 			:ref="item.name">
 			<slot 
 				:name="item.name"
-				
+				data
 				v-if="item.showBlock !== null ? item.showBlock : item.show">
 			</slot>
 		</div>
@@ -63,8 +63,11 @@ export default {
 		showBlock (val) {
 			this.slotProps.length == 0 && (this.slotArr[0].showBlock = !!val)
 		},
-		slotProps (val) {
-			console.log(val)
+		slotProps: {
+			handler (val) {
+				this.
+			},
+			deep: true
 		}
 	},
 	methods: {
