@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-29 10:17:46
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-05-28 18:50:24
+* @Last Modified time: 2020-06-01 11:44:09
 * @Description: create by zgh
 * @GitHub: Savour Humor
 -->
@@ -15,7 +15,7 @@
 			<slot 
 				:name="item.name"
 				data
-				v-if="item.showBlock !== null ? item.showBlock : item.show">
+				v-if="judgeShow(item)">
 			</slot>
 		</div>
 	</div>
@@ -65,13 +65,13 @@ export default {
 		},
 		slotProps: {
 			handler (val) {
-				this.
+				if (!Array.isArray(val)) return
+				this.slotArr = this.formatSlotProps()
 			},
 			deep: true
 		}
 	},
 	methods: {
-		// TODO: 实现滚动参数和 bottom 的兼容，以及数据变动的处理。
 		formatSlotProps () {
 			const slotProps = this.slotProps
 			slotProps.every(val => val.name !== 'default') && slotProps.push({
@@ -115,7 +115,7 @@ export default {
 				    	!vm.viewPortHeight && (vm.viewPortHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)
 				    	const judgeHeight = i > 0 ? vm.viewPortHeight + val.bottomSpan : vm.viewPortHeight + val.bottom
 				    	if (offsetTop - scrollTop < judgeHeight) {
-				    		val.show = true
+				    		val.showBlock !== null ? val.showBlock = true : val.show = true
 				    		vm.$emit('load', val.name)
 				    	}
 				    	i > 0 && vm.judgeShow(vm.slotArr[i - 1]) && (val.bottomSpan = val.bottom)

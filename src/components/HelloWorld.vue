@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-28 19:57:00
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-05-28 18:32:54
+* @Last Modified time: 2020-06-01 11:35:02
 * @Description: create by zgh
 * @GitHub: Savour Humor
 -->
@@ -241,15 +241,16 @@ export default {
 
     setTimeout(() => {
       console.log('timeout 3000')
-      this.slotProps[1].showBlock = true
+      // this.slotProps[1].showBlock = true
     }, 3000)
     setTimeout(() => {
       console.log('timeout 6000')
-      this.slotProps[2].showBlock = true
+      this.slotProps[2].bottom = 100
+      // this.slotProps[2].showBlock = true
     }, 6000)
     setTimeout(() => {
       console.log('timeout 8000')
-      this.slotProps[3].showBlock = true
+      // this.slotProps[3].showBlock = true
     }, 8000)
   },
   methods: {
