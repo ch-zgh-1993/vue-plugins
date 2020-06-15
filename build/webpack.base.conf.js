@@ -2,7 +2,7 @@
 * @Author: Zhang Guohua
 * @Date:   2020-04-28 19:56:37
 * @Last Modified by:   zgh
-* @Last Modified time: 2020-04-29 10:38:39
+* @Last Modified time: 2020-06-12 16:05:54
 * @Description: create by zgh
 * @GitHub: Savour Humor
 */
@@ -82,6 +82,10 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.less$/,
+        loader: "style-loader!css-loader!less-loader"
       }
     ]
   },
